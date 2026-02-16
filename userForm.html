@@ -41,44 +41,12 @@
             <option>4th Year</option>
         </select>
 
-        <label>Academic Documents</label>
-        <input type="file" multiple>
-
-        <label>Non-Academic Documents</label>
-        <input type="file" multiple>
-
-        <label>Achievements / Activities</label>
-        <textarea id="achievements" rows="3"></textarea>
 
         <button type="submit">Submit Portfolio</button>
 
-        <div class="success-message" id="successMsg"></div>
     </form>
 </div>
 
-<script>
-document.getElementById("portfolioForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const studentData = {
-        studentId: document.getElementById("studentId").value,
-        fullName: document.getElementById("fullName").value,
-        dob: document.getElementById("dob").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        department: document.getElementById("department").value,
-        year: document.getElementById("year").value,
-        achievements: document.getElementById("achievements").value
-    };
-
-    localStorage.setItem("studentPortfolio", JSON.stringify(studentData));
-
-    document.getElementById("successMsg").innerText = 
-        "Portfolio submitted successfully (Saved in browser storage).";
-
-    document.getElementById("portfolioForm").reset();
-});
-</script>
 
 </body>
 </html>
