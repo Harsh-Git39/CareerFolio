@@ -1,61 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Portfolio Management Form</title>
-      <link rel="stylesheet" href="userform.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portfolio Management</title>
 
 </head>
+
 <body>
 
 <div class="container">
-    <h2>Student Portfolio Management Form</h2>
+    <h2>Student Portfolio Form</h2>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form id="portfolioForm">
 
-        <label for="studentId">Student ID</label>
-        <input type="text" id="studentId" name="studentId" required>
+        <label>Student ID</label>
+        <input type="text" id="studentId" required>
 
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" required>
+        <label>Full Name</label>
+        <input type="text" id="fullName" required>
 
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required>
+        <label>Date of Birth</label>
+        <input type="date" id="dob" required>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
+        <label>Email</label>
+        <input type="email" id="email" required>
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required>
+        <label>Phone Number</label>
+        <input type="tel" id="phone" required>
 
-        <label for="department">Department</label>
-        <input type="text" id="department" name="department" required>
+        <label>Department</label>
+        <input type="text" id="department" required>
 
-        <label for="year">Year of Study</label>
-        <select id="year" name="year" required>
-            <option value="">-- Select Year --</option>
-            <option value="1">1st Year</option>
-            <option value="2">2nd Year</option>
-            <option value="3">3rd Year</option>
-            <option value="4">4th Year</option>
+        <label>Year of Study</label>
+        <select id="year" required>
+            <option value="">Select Year</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
         </select>
 
-        <!-- Academic Documents -->
-        <label for="academicDocs">Upload Academic Documents</label>
-        <input type="file" id="academicDocs" name="academicDocs" multiple>
+        <label>Academic Documents</label>
+        <input type="file" multiple>
 
-        <!-- Non-Academic Documents -->
-        <label for="nonAcademicDocs">Upload Non-Academic Documents</label>
-        <input type="file" id="nonAcademicDocs" name="nonAcademicDocs" multiple>
+        <label>Non-Academic Documents</label>
+        <input type="file" multiple>
 
-        <!-- Achievements -->
-        <label for="achievements">Achievements / Activities</label>
-        <textarea id="achievements" name="achievements" rows="4"></textarea>
+        <label>Achievements / Activities</label>
+        <textarea id="achievements" rows="3"></textarea>
 
-        <button type="submit" class="btn">Submit Portfolio</button>
+        <button type="submit">Submit Portfolio</button>
 
+        <div class="success-message" id="successMsg"></div>
     </form>
 </div>
+
+<script>
+document.getElementById("portfolioForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const studentData = {
+        studentId: document.getElementById("studentId").value,
+        fullName: document.getElementById("fullName").value,
+        dob: document.getElementById("dob").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        department: document.getElementById("department").value,
+        year: document.getElementById("year").value,
+        achievements: document.getElementById("achievements").value
+    };
+
+    localStorage.setItem("studentPortfolio", JSON.stringify(studentData));
+
+    document.getElementById("successMsg").innerText = 
+        "Portfolio submitted successfully (Saved in browser storage).";
+
+    document.getElementById("portfolioForm").reset();
+});
+</script>
 
 </body>
 </html>
