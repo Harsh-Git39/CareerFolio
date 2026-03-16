@@ -1,4 +1,4 @@
-const BASE = "http://localhost:5000/api";
+const BASE = "https://careerfolio-0y6a.onrender.com";
 
 async function req(method, path, body, isForm = false) {
   const opts = { method, headers: {} };
